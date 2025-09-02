@@ -11,11 +11,7 @@ def calculate_demographic_data(print_data=True):
     average_age_men = round(df.loc[df['sex'] == 'Male', 'age'].mean(), 1)
 
     # What is the percentage of people who have a Bachelor's degree?
-    bach_num = len(df.loc[df['education'] == 'Bachelors', 'education'])
-    total_num = len(df)
-    total = round((bach_num*100)/total_num,1)
-
-    percentage_bachelors = total
+    percentage_bachelors = (df['education'] == 'Bachelors').mean() *100 # Em variáveis categóricas, o .mean() pega a proporção daquela variável em relação ao todo.
 
     # What percentage of people with advanced education (`Bachelors`, `Masters`, or `Doctorate`) make more than 50K?
     # What percentage of people without advanced education make more than 50K?
